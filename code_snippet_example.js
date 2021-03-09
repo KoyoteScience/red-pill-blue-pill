@@ -6,31 +6,6 @@ var map_pill_color_to_reward = {
     'blue': 1
 }
 
-function updateOptimizePill() {
-    document.getElementById("optimizeRedPill").checked = map_pill_color_to_reward['red'] == 1
-    document.getElementById("optimizeBluePill").checked = map_pill_color_to_reward['blue'] == 1
-}
-
-function changePillHasTheReward(pill_color) {
-    if (
-        (pill_color == 'red' && map_pill_color_to_reward['red'] == 0) || 
-        (pill_color == 'blue' && map_pill_color_to_reward['blue'] == 1)
-    ) {
-        map_pill_color_to_reward = {
-            'red': 1,
-            'blue': 0
-        }
-    } else {
-        map_pill_color_to_reward = {
-            'red': 0,
-            'blue': 1
-        }
-    }
-    updateOptimizePill()
-    restart()
-    
-}
-
 var most_recently_selected_feature_vector = null
 var api_key_for_bandito = 'cILEqAj8kK9qphdlGRTmZ3LLwBs0s0mE9vgDFz2z'
 var headlines_to_consider = {
@@ -102,6 +77,31 @@ async function restart() {
 
 async function pull() {
     most_recently_selected_feature_vector = await getHeadline()
+}
+
+function updateOptimizePill() {
+    document.getElementById("optimizeRedPill").checked = map_pill_color_to_reward['red'] == 1
+    document.getElementById("optimizeBluePill").checked = map_pill_color_to_reward['blue'] == 1
+}
+
+function changePillHasTheReward(pill_color) {
+    if (
+        (pill_color == 'red' && map_pill_color_to_reward['red'] == 0) || 
+        (pill_color == 'blue' && map_pill_color_to_reward['blue'] == 1)
+    ) {
+        map_pill_color_to_reward = {
+            'red': 1,
+            'blue': 0
+        }
+    } else {
+        map_pill_color_to_reward = {
+            'red': 0,
+            'blue': 1
+        }
+    }
+    updateOptimizePill()
+    restart()
+    
 }
 
 // Do first run automatically when the page loads
