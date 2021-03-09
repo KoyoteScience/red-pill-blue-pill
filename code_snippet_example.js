@@ -1,4 +1,8 @@
 
+//
+// The core code needed to reconstruct this demonstration is between this comment...
+//
+
 import banditoAPI from '../bandito.js'
 
 var map_pill_color_to_reward = {
@@ -74,6 +78,12 @@ async function restart() {
     var response = await bandit.restart()
     most_recently_selected_feature_vector = await getHeadline()
 }
+
+
+//
+// ...and this comment
+//
+
 
 async function pull() {
     most_recently_selected_feature_vector = await getHeadline()
