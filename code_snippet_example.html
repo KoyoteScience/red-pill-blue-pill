@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Which Pill Will You Take?</title>
+    <link rel="stylesheet" href="../style.css">
+    <script type="module" src="../code_snippet_example.js"></script>
+</head>
+
+<body>
+
+<div id="wrapper" style="text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 250px;
+  /*border-style: solid;*/
+  /*border-width: 1px;*/
+  padding: 20px;
+  padding-bottom: 20px;"
+>
+    <div id="banner" style="text-align: center"><a href="http://www.koyotescience.com/products" target="_blank"><img style="max-width: 700px; height: auto" src="../bandito_demonstration_banner.png"></a></div>
+<br />
+    <p style="align-content: center;">
+    <div id="sub_wrapper" style="text-align: center;
+      width: 200px;
+      border-style: solid;
+      border-width: 1px;
+      padding: 10px;
+      padding-bottom: 20px;
+      padding-left: 40px;
+      padding-right: 40px;
+  margin: 0 auto;"
+    >
+        <div id="headline"><h2>Loading Headline...</h2></div>
+        <button id="redPill" style="background-color: pink;">Red Pill</button>&nbsp;&nbsp;
+        <button id="bluePill" style="background-color: lightblue;">Blue Pill</button>
+    </div></p>
+        <br/>
+        <br/>
+        <button id="pull">Try Again</button>&nbsp;&nbsp;
+        <button id="restart">Restart</button>
+        <br/>
+        <br/>
+        Optimize for: <br/>
+        <label><input type="checkbox" id="optimizeRedPill" name="red">&nbsp;Red Pill</label>
+        &nbsp;&nbsp;<label><input type="checkbox" id="optimizeBluePill" name="blue">&nbsp;Blue Pill</label>
+        <br/>
+        <br/>
+        Training Progress: <text id="training_progress"></text>
+        <br/>
+        <br/>
+        <button id="see_dashboard"
+                onclick="window.open(
+                    'http://banditoapi.com/model_info.html?access_key=U2FsdGVkX182UmfFShYPvfqle%2F3UhN0NTtmj5i6cDDPQBkrPohHwWS2jTi9gFaNb6T1Kk0mcGPfxLQfMN%2FUaCw%3D%3D&model_id=app_id%3Dcode_snippet_example&app_id=code_snippet_example',
+                    '_blank' // <- This is what makes it open in a new window.
+                );">
+            Go To Dashboard
+        </button>
+        <br/>
+        <br/>
+        <button id="see_code"
+                onclick="window.open(
+                    'http://banditoapi.com/model_info.html?access_key=U2FsdGVkX182UmfFShYPvfqle%2F3UhN0NTtmj5i6cDDPQBkrPohHwWS2jTi9gFaNb6T1Kk0mcGPfxLQfMN%2FUaCw%3D%3D&model_id=app_id%3Dcode_snippet_example&app_id=code_snippet_example',
+                    '_blank' // <- This is what makes it open in a new window.
+                );">See The Code
+        </button>
+    <br/>
+    <br/>
+    <div style="text-align:center;">
+        <a href="http://www.koyotescience.com" target="_blank"><img src="footer_logo.png" style="max-width: 200px; height: auto"></a>
+    </div>
+</div>
+</body>
+</html>
