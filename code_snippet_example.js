@@ -35,14 +35,12 @@ var bandit = new banditoAPI(
 )
 
 async function getHeadline() {
-    var content = document.getElementById("headline")
-    content.innerHTML = `<h2>Thinking...</h2>`
+    updateHeadline('<h2>Thinking...</h2>')
     var action_index = await bandit.select_with_automatic_restart(
         bandit_metadata.feature_vectors,
         bandit_metadata.model_type
     )
-    var content = document.getElementById("headline")
-    content.innerHTML = `<h2>${headlines_to_consider[bandit_metadata.feature_vectors[action_index][0]]}</h2>`
+    updateHeadline(`<h2>${headlines_to_consider[bandit_metadata.feature_vectors[action_index][0]]}</h2>`)
     
     var content = document.getElementById("training_progress")
     content.innerHTML = `${(bandit.progress*100.0)/1.0.toFixed(2)}%`
@@ -51,8 +49,7 @@ async function getHeadline() {
 }
 
 async function bluePill() {
-    var content = document.getElementById("headline")
-    content.innerHTML = `<h2>Thinking...</h2>`
+    updateHeadline('<h2>Thinking...</h2>')
     var response = await bandit.train(
         [most_recently_selected_feature_vector],
         [map_pill_color_to_reward['blue']]
@@ -61,8 +58,7 @@ async function bluePill() {
 }
 
 async function redPill() {
-    var content = document.getElementById("headline")
-    content.innerHTML = `<h2>Thinking...</h2>`
+    updateHeadline('<h2>Thinking...</h2>')
     var response = await bandit.train(
         [most_recently_selected_feature_vector],
         [map_pill_color_to_reward['red']]
@@ -71,10 +67,8 @@ async function redPill() {
 }
 
 async function restart() {
-    var content = document.getElementById("headline")
-    content.innerHTML = `<h2>Restarting...</h2>`
-    var content = document.getElementById("training_progress")
-    content.innerHTML = `0%`
+    updateHeadline('<h2>Restarting...</h2>')
+    updateProgress('0%')
     var response = await bandit.restart()
     most_recently_selected_feature_vector = await getHeadline()
 }
@@ -84,6 +78,15 @@ async function restart() {
 // ...and this comment
 //
 
+function updateHeadline(new_value) {
+    var content = document.getElementById("headline")
+    content.innerHTML = new_value
+}
+
+function updateProgress(new_value) {
+    var content = document.getElementById("training_progress")
+    content.innerHTML = new_value
+}
 
 async function pull() {
     most_recently_selected_feature_vector = await getHeadline()
