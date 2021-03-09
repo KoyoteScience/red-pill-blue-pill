@@ -1,4 +1,3 @@
-
 //
 // The core code needed to perform the business logic is between this comment...
 //
@@ -11,7 +10,11 @@ var headlines_to_consider = [
     '<text style="color: red;">Take the red pill</text>',
 ]
 
-var bandit = new headlineOptimizer(api_key_for_bandito, 'app_id=code_snippet_example', headlines_to_consider)
+var bandit = new headlineOptimizer(
+    api_key_for_bandito, 
+    'app_id=code_snippet_example', 
+    headlines_to_consider
+)
 
 var most_recently_selected_headline = null
 var map_pill_color_to_reward = {
@@ -21,20 +24,22 @@ var map_pill_color_to_reward = {
 
 async function getHeadline() {
     updateHeadline('<h2>Thinking...</h2>')
-    
+
     var stopwatch_start = (new Date()).getTime()
     var selected_headline = await bandit.selectHeadline()
     var stopwatch_stop = (new Date()).getTime()
-    
+
     updateLatency(`${stopwatch_stop - stopwatch_start} ms`)
     updateHeadline(`<h2>${selected_headline}</h2>`)
-    updateProgress(`${(bandit.progress*100.0)/1.0.toFixed(2)}%`)    
+    updateProgress(`${(bandit.progress * 100.0) / 1.0.toFixed(2)}%`)
     return selected_headline
 }
 
 async function bluePill() {
     updateHeadline('<h2>Thinking...</h2>')
-    var response = await bandit.trainMostRecentlySelectedHeadline(map_pill_color_to_reward['blue'])
+    var response = await bandit.trainMostRecentlySelectedHeadline(
+        map_pill_color_to_reward['blue']
+    )
     most_recently_selected_headline = await getHeadline()
 }
 
@@ -86,7 +91,7 @@ function updateOptimizePill() {
 
 function changePillHasTheReward(pill_color) {
     if (
-        (pill_color == 'red' && map_pill_color_to_reward['red'] == 0) || 
+        (pill_color == 'red' && map_pill_color_to_reward['red'] == 0) ||
         (pill_color == 'blue' && map_pill_color_to_reward['blue'] == 1)
     ) {
         map_pill_color_to_reward = {
@@ -101,7 +106,7 @@ function changePillHasTheReward(pill_color) {
     }
     updateOptimizePill()
     restart()
-    
+
 }
 
 // Do first pull and display update automatically when the page loads
