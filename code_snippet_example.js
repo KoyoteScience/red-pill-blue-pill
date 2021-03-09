@@ -45,9 +45,8 @@ async function bluePill() {
 
 async function redPill() {
     updateHeadline('<h2>Thinking...</h2>')
-    var response = await bandit.train(
-        [most_recently_selected_headline],
-        [map_pill_color_to_reward['red']]
+    var response = await bandit.trainMostRecentlySelectedHeadline(
+        map_pill_color_to_reward['red']
     )
     most_recently_selected_headline = await getHeadline()
 }
