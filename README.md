@@ -1,7 +1,7 @@
 # red-pill-blue-pill
 Simple demonstration of the Bandito API presented at https://banditoapi.com/code_snippet_example.html
 
-This demonstration uses two files: **code_snippet_example.html** for the layout and **code_snippet_example.js** for the business logic. The demonstration presents a headline and two buttons: "Red Pill" and "Blue Pill". The user is encouraged to take one of the two pills (by clicking on the button), and Bandito API automatically learns which headlines will produce the desired outcome.
+This demonstration uses three files: **code_snippet_example.html** for the layout, **code_snippet_example.js** for the business logic, and **bandito.js** for the client-side API. The demonstration presents a headline and two buttons: "Red Pill" and "Blue Pill". The user is encouraged to take one of the two pills (by clicking on the button), and Bandito API automatically learns which headlines will produce the desired outcome.
 
 An additional option allows the user to determine which of the two pills the API will learn to encourage.
 
