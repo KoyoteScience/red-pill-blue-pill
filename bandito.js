@@ -9,7 +9,7 @@ export default class banditoAPI {
                  api_key=null,
                  model_id=null,
                  feature_metadata=null,
-                 model_type='LinearAlgebraLinearRegression',
+                 model_type='CovarianceLinearRegression',
                  predict_on_all_models=false,
                  feature_vectors=null,
                  ) {
